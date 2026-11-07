@@ -615,6 +615,8 @@ function openWishlist() {
 function updateCartCount() {
   const count = cart.reduce((s, l) => s + l.qty, 0);
   $('cartCount').textContent = count;
+  const detailCount = $('detailCartCount');
+  if (detailCount) detailCount.textContent = count;
 }
 
 function cartSubtotal() {
@@ -624,20 +626,23 @@ function cartSubtotal() {
   }, 0);
 }
 
-function addToCart(product, size) {
+function addToCart(product, size, { openBag = true } = {}) {
   const existing = cart.find(l => l.id === product.id && l.size === size);
   const currentQty = existing ? existing.qty : 0;
   if (currentQty >= product.stock) {
     toast('No more stock available for that size');
-    return;
+    return false;
   }
   if (existing) existing.qty++;
   else cart.push({ id: product.id, size, qty: 1 });
   saveCart();
   updateCartCount();
-  $('modalRoot').innerHTML = '';
   toast(`${product.name} · Size ${size} added`);
-  openCart();
+  if (openBag) {
+    $('modalRoot').innerHTML = '';
+    openCart();
+  }
+  return true;
 }
 
 function openCart() {
@@ -721,39 +726,112 @@ $('cartBtn').addEventListener('click', openCart);
 function openDetail(p) {
   selectedSize = null;
   const root = $('modalRoot');
+  const closeDetail = () => {
+    root.innerHTML = '';
+    document.documentElement.classList.remove('product-detail-open');
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('product')) {
+      url.searchParams.delete('product');
+      window.history.replaceState(null, '', url);
+    }
+  };
+  document.documentElement.classList.add('product-detail-open');
   root.innerHTML = `
-    <div class="backdrop" id="detailBack">
-      <div class="modal">
-        <button class="close-btn" id="closeDetail">×</button>
-        <div class="modal-image ${p.id === 'aj1-low-panda' ? 'panda-visual' : ''}">
-          <img class="${p.id === 'aj1-low-panda' ? 'panda-photo' : ''}" src="${escapeHTML(p.image)}" data-fallback="${escapeHTML(p.imageFallback)}" alt="${escapeHTML(p.name)}">
+    <div class="product-detail-page" id="detailBack">
+      <header class="product-detail-toolbar">
+        <button class="detail-icon-button" id="closeDetail" type="button" aria-label="Back to products">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M9 12h12"/></svg>
+        </button>
+        <div class="detail-toolbar-actions">
+          <button class="detail-icon-button" id="detailShare" type="button" aria-label="Share product">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 7 6.6 4.4"/></svg>
+          </button>
+          <button class="detail-icon-button" id="detailSearch" type="button" aria-label="Search products">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          </button>
+          <button class="detail-icon-button detail-cart-button" id="detailCart" type="button" aria-label="Open cart">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+            <span class="detail-cart-count" id="detailCartCount">${cart.reduce((sum, line) => sum + line.qty, 0)}</span>
+          </button>
         </div>
-        <div class="modal-content">
-          <div class="eyebrow">AJ · ${escapeHTML(p.colorway)}</div>
-          <h2>${escapeHTML(p.name)}</h2>
-          <div class="modal-price">${money(p.price)}</div>
-          <p class="modal-desc">${escapeHTML(p.desc)}</p>
-          <div class="size-label">
-            <span>Select Size</span>
-            <span>US Men</span>
+      </header>
+      <main class="product-detail-content">
+        <div class="product-detail-image ${p.id === 'aj1-low-panda' ? 'panda-visual' : ''}">
+          <img class="${p.id === 'aj1-low-panda' ? 'panda-photo' : ''}" src="${escapeHTML(p.image)}" data-fallback="${escapeHTML(p.imageFallback)}" alt="${escapeHTML(p.name)} ${escapeHTML(p.colorway)}">
+        </div>
+        <section class="product-detail-info" aria-labelledby="detailTitle">
+          <p class="product-detail-eyebrow">HALFCOURT · AVAILABLE NOW</p>
+          <div class="product-detail-title-row">
+            <div>
+              <h1 id="detailTitle">${escapeHTML(p.name)}</h1>
+              <p class="product-detail-colorway">AJ · ${escapeHTML(p.colorway)}</p>
+            </div>
+            <button class="detail-heart-button ${wishlist.includes(p.id) ? 'saved' : ''}" id="detailWish" type="button" aria-label="${wishlist.includes(p.id) ? 'Remove from wishlist' : 'Add to wishlist'}" aria-pressed="${wishlist.includes(p.id)}">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+            </button>
           </div>
+          <p class="product-detail-price">${money(p.price)}</p>
+          <p class="product-detail-description">${escapeHTML(p.desc)}</p>
+          <div class="product-detail-size-heading"><span>Select size</span><span>US Men</span></div>
           <div class="sizes">
             ${ALL_SIZES.map(s => `
-              <button class="size-btn ${p.sizes.includes(s) ? '' : ''}"
-                data-size="${s}"
-                ${p.sizes.includes(s) ? '' : 'disabled'}>${s}</button>
+              <button class="size-btn" data-size="${s}" ${p.sizes.includes(s) ? '' : 'disabled'}>${s}</button>
             `).join('')}
           </div>
-          <button class="btn btn-primary add-btn" id="addToBag" disabled>Select a size</button>
-          <div class="stock-note">
-            ${p.stock > 0 ? `● ${p.stock} pairs available` : '● Currently sold out'}
-          </div>
-        </div>
-      </div>
+          <p class="product-detail-stock">${p.stock > 0 ? `● ${p.stock} pairs available` : '● Currently sold out'}</p>
+          <a class="product-detail-contact" href="tel:09917257903">Questions? Call 09917257903</a>
+        </section>
+      </main>
+      <footer class="product-detail-actions">
+        <button class="detail-buy-button detail-add-button" id="addToBag" type="button" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l1 14H5L6 7Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+          <span>Add to Cart</span>
+        </button>
+        <button class="detail-buy-button detail-buy-now" id="buyNow" type="button" disabled>Buy Now</button>
+      </footer>
     </div>
   `;
-  $('closeDetail').onclick = () => root.innerHTML = '';
-  $('detailBack').onclick = e => { if (e.target.id === 'detailBack') root.innerHTML = ''; };
+  $('closeDetail').onclick = closeDetail;
+  $('detailCart').onclick = () => {
+    closeDetail();
+    openCart();
+  };
+  $('detailSearch').onclick = () => {
+    closeDetail();
+    document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+    $('searchInput').focus({ preventScroll: true });
+  };
+  $('detailShare').onclick = async () => {
+    const shareUrl = new URL(window.location.href);
+    shareUrl.searchParams.set('product', p.id);
+    const shareData = {
+      title: `${p.name} · ${p.colorway} | HalfCourt`,
+      text: `${p.name} in ${p.colorway} — ${money(p.price)}`,
+      url: shareUrl.href
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(shareData.url);
+        toast('Product link copied');
+      } else {
+        toast('Sharing is not available in this browser');
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') return;
+      console.error('Product sharing failed:', error);
+      toast('Could not share this product');
+    }
+  };
+  $('detailWish').onclick = () => {
+    toggleWish(p.id);
+    const saved = wishlist.includes(p.id);
+    const button = $('detailWish');
+    button.classList.toggle('saved', saved);
+    button.setAttribute('aria-pressed', String(saved));
+    button.setAttribute('aria-label', saved ? 'Remove from wishlist' : 'Add to wishlist');
+  };
 
   root.querySelectorAll('.size-btn:not(:disabled)').forEach(btn => {
     btn.onclick = () => {
@@ -761,13 +839,20 @@ function openDetail(p) {
       btn.classList.add('selected');
       selectedSize = btn.dataset.size;
       const addBtn = $('addToBag');
-      addBtn.disabled = false;
-      addBtn.textContent = `Add Size ${selectedSize} to Bag`;
+      const buyButton = $('buyNow');
+      addBtn.disabled = buyButton.disabled = false;
+      addBtn.querySelector('span').textContent = `Add Size ${selectedSize} to Cart`;
       addBtn.onclick = () => {
-        animateCartFlight(p, root.querySelector('.modal-image img'));
-        addBtn.textContent = 'Added ✓';
-        addBtn.classList.add('is-added');
-        addToCart(p, selectedSize);
+        animateCartFlight(p, root.querySelector('.product-detail-image img'));
+        if (addToCart(p, selectedSize, { openBag: false })) {
+          addBtn.querySelector('span').textContent = `Added Size ${selectedSize}`;
+        }
+      };
+      buyButton.onclick = () => {
+        if (addToCart(p, selectedSize, { openBag: false })) {
+          closeDetail();
+          openCheckout();
+        }
       };
     };
   });
@@ -1134,6 +1219,12 @@ async function boot() {
   await loadCatalog();
   renderGrid();
   renderCarousel();
+  const sharedProductId = new URLSearchParams(window.location.search).get('product');
+  if (sharedProductId) {
+    const sharedProduct = PRODUCTS.find(product => product.id === sharedProductId);
+    if (sharedProduct) openDetail(sharedProduct);
+    else toast('That product is no longer available');
+  }
   updateCartCount();
   updateWishCount();
   initHeroSpinner();
