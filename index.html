@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HalfCourt Shoe — Davao | Jordan & Sneakers</title>
+  <meta name="description" content="HalfCourt Shoe — verified Jordan pairs in Davao. Peso pricing, local pickup, Metro Davao delivery.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    [hidden] { display: none !important; }
+    html.admin-mode, html.admin-mode body { min-height: 100%; background: #0a0a0a; color: #f2f2f2; }
+    html.admin-mode #storefrontApp { display: none !important; }
+    #adminRoot {
+      --admin-bg: #0a0a0a;
+      --admin-panel: #151515;
+      --admin-line: #2b2b2b;
+      --admin-muted: #858585;
+      --admin-text: #f2f2f2;
+      --admin-red: #ff3830;
+      --admin-lime: #c8ff00;
+      min-height: 100vh;
+      color: var(--admin-text);
+      background: var(--admin-bg);
+      font: 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #adminRoot *, #adminRoot *::before, #adminRoot *::after { box-sizing: border-box; }
+    #adminRoot button, #adminRoot input { font: inherit; }
+    #adminRoot button { color: inherit; }
+    #adminRoot .auth-shell { display: grid; min-height: 100vh; place-items: center; padding: 24px; }
+    #adminRoot .auth-card { width: min(420px, 100%); padding: 28px; border: 1px solid var(--admin-line); border-radius: 8px; background: var(--admin-panel); }
+    #adminRoot .brand { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: .04em; }
+    #adminRoot .brand-mark { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: var(--admin-red); color: #fff; font-size: 12px; }
+    #adminRoot .brand small { display: block; margin-top: 4px; color: var(--admin-muted); font-size: 8px; letter-spacing: .13em; }
+    #adminRoot .auth-card h1 { margin: 28px 0 8px; font-size: 25px; letter-spacing: -.04em; }
+    #adminRoot .subheading { margin: 8px 0 0; color: var(--admin-muted); font-size: 12px; line-height: 1.6; }
+    #adminRoot .field { margin-top: 18px; }
+    #adminRoot .field label { display: block; margin-bottom: 7px; color: #bdbdbd; font-size: 11px; }
+    #adminRoot .field input, #adminRoot .search { width: 100%; min-height: 42px; padding: 0 12px; border: 1px solid var(--admin-line); border-radius: 5px; outline: none; background: #101010; color: var(--admin-text); }
+    #adminRoot .field input:focus, #adminRoot .search:focus { border-color: var(--admin-red); }
+    #adminRoot .primary-button, #adminRoot .secondary-button { min-height: 38px; padding: 0 14px; border: 1px solid var(--admin-line); border-radius: 5px; background: #1d1d1d; cursor: pointer; font-size: 11px; font-weight: 700; }
+    #adminRoot .primary-button { width: 100%; margin-top: 20px; border-color: var(--admin-red); background: var(--admin-red); }
+    #adminRoot .primary-button:disabled { opacity: .6; cursor: wait; }
+    #adminRoot .error-message { min-height: 18px; margin: 12px 0 0; color: #ff8a84; font-size: 11px; line-height: 1.5; }
+    #adminRoot .topbar { position: sticky; z-index: 2; top: 0; display: flex; min-height: 54px; align-items: center; gap: 18px; padding: 0 22px; border-bottom: 1px solid var(--admin-line); background: rgba(10, 10, 10, .97); }
+    #adminRoot .top-navigation { display: flex; min-width: 0; flex: 1; align-items: stretch; gap: 4px; align-self: stretch; }
+    #adminRoot .nav-button { position: relative; display: flex; align-items: center; padding: 0 11px; border: 0; background: transparent; color: #969696; cursor: pointer; font-size: 11px; font-weight: 600; white-space: nowrap; }
+    #adminRoot .nav-button:hover, #adminRoot .nav-button.active { color: var(--admin-text); }
+    #adminRoot .nav-button.active::after { position: absolute; right: 0; bottom: 0; left: 0; height: 2px; background: var(--admin-red); content: ""; }
+    #adminRoot .admin-actions { display: flex; align-items: center; gap: 12px; }
+    #adminRoot .admin-email { max-width: 190px; overflow: hidden; color: var(--admin-muted); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+    #adminRoot .live-badge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border: 1px solid var(--admin-line); border-radius: 999px; color: var(--admin-muted); font-size: 9px; white-space: nowrap; }
+    #adminRoot .live-badge i { width: 7px; height: 7px; border-radius: 50%; background: var(--admin-lime); }
+    #adminRoot .shell { width: min(1420px, 100%); min-height: calc(100vh - 54px); margin: 0 auto; }
+    #adminRoot .content { min-width: 0; padding: 28px clamp(16px, 3vw, 40px); }
+    #adminRoot .welcome { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+    #adminRoot .eyebrow { margin: 0 0 8px; color: #9aa8bf; font-size: 9px; font-weight: 800; letter-spacing: .16em; }
+    #adminRoot h1 { margin: 0; font-size: clamp(24px, 3vw, 34px); letter-spacing: -.045em; }
+    #adminRoot h2 { margin: 0; font-size: 14px; }
+    #adminRoot .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+    #adminRoot .metric, #adminRoot .panel, #adminRoot .full-panel, #adminRoot .detail-card { border: 1px solid var(--admin-line); border-radius: 6px; background: var(--admin-panel); }
+    #adminRoot .metric { min-height: 125px; padding: 15px; }
+    #adminRoot .metric:nth-child(1) { border-left: 3px solid var(--admin-red); }
+    #adminRoot .metric:nth-child(2) { border-left: 3px solid var(--admin-lime); }
+    #adminRoot .metric-label { color: var(--admin-muted); font-size: 10px; }
+    #adminRoot .metric-value { margin-top: 14px; font-size: clamp(22px, 2.5vw, 30px); font-weight: 700; letter-spacing: -.05em; }
+    #adminRoot .metric-foot { margin-top: 5px; color: #777; font-size: 10px; }
+    #adminRoot .dashboard-grid { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 14px; align-items: start; }
+    #adminRoot .dashboard-main { min-width: 0; }
+    #adminRoot .panel, #adminRoot .full-panel, #adminRoot .detail-card { padding: 16px; }
+    #adminRoot .panel-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    #adminRoot .panel-heading p { margin: 0; color: var(--admin-muted); font-size: 10px; }
+    #adminRoot .table-scroll { overflow-x: auto; }
+    #adminRoot table { width: 100%; border-collapse: collapse; text-align: left; white-space: nowrap; }
+    #adminRoot th { height: 32px; padding: 0 10px; color: #777; font-size: 8px; letter-spacing: .08em; }
+    #adminRoot td { height: 48px; padding: 6px 10px; border-top: 1px solid #292929; color: #dedede; font-size: 10px; }
+    #adminRoot .muted-cell { color: var(--admin-muted); }
+    #adminRoot .stock-low { color: #ffc66d; }
+    #adminRoot .stock-out { color: #ff7770; }
+    #adminRoot .bottom-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+    #adminRoot .empty-state { padding: 28px 12px; color: var(--admin-muted); font-size: 11px; text-align: center; }
+    #adminRoot .search { width: min(360px, 100%); min-height: 34px; font-size: 10px; }
+    #adminRoot .result-count { margin-left: auto; color: var(--admin-muted); font-size: 10px; }
+    #adminRoot .toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    #adminRoot .detail-card { padding: 14px; }
+    #adminRoot .detail-card .eyebrow { margin-bottom: 12px; }
+    #adminRoot .detail-card h2 { margin: 12px 0 5px; }
+    #adminRoot .detail-card p { margin: 0 0 12px; color: var(--admin-muted); font-size: 10px; }
+    #adminRoot .detail-info { display: flex; justify-content: space-between; padding: 10px 0; border-top: 1px solid var(--admin-line); color: var(--admin-muted); font-size: 10px; }
+    #adminRoot .detail-info b { color: #ddd; font-weight: 600; }
+    #adminRoot .page-error { margin: 0 0 14px; color: #ff8a84; font-size: 11px; }
+    @media (max-width: 900px) {
+      #adminRoot .topbar { flex-wrap: wrap; gap: 8px 14px; padding: 8px 14px 0; }
+      #adminRoot .top-navigation { order: 3; width: 100%; overflow-x: auto; }
+      #adminRoot .nav-button { min-height: 40px; }
+      #adminRoot .admin-actions { margin-left: auto; }
+      #adminRoot .dashboard-grid { grid-template-columns: 1fr; }
+      #adminRoot .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      #adminRoot .admin-email { display: none; }
+      #adminRoot .bottom-grid { grid-template-columns: 1fr; }
+      #adminRoot .welcome { align-items: flex-start; flex-direction: column; }
+      #adminRoot .content { padding-top: 20px; }
+    }
+  </style>
+  <script>
+    if (location.hash === '#admin') document.documentElement.classList.add('admin-mode');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="storefrontApp">
+  <!-- Announcement -->
+  <div class="announcement">
+    <span><b>DAVAO DROP</b> — FREE METRO DAVAO DELIVERY ON ORDERS OVER ₱8,000 · LOCAL PICKUP AVAILABLE</span>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#top" class="logo" aria-label="HalfCourt Shoe">
+        <span class="logo-mark">HC</span>
+        <span class="logo-text"><strong>HalfCourt</strong><small>Shoe · Davao</small></span>
+      </a>
+      <nav class="nav">
+        <a href="#new">New Releases</a>
+        <a href="#shop">Men</a>
+        <a href="#collections">Collections</a>
+        <a href="#pickup">Pickup Davao</a>
+        <a href="#sale">Sale</a>
+        <a href="#admin">Admin</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="searchBtn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="badge" id="wishCount" hidden>0</span>
+        </button>
+        <button class="icon-btn" id="orderBtn" aria-label="Order history" title="Order history">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18H6z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+        </button>
+        <button class="icon-btn" id="accountBtn" aria-label="Account" title="Sign in">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <button class="icon-btn cart-btn" id="cartBtn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="badge" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-inner">
+      <button class="close-mobile" id="closeMobile">×</button>
+      <a href="#new">New Releases</a>
+      <a href="#shop">Men</a>
+      <a href="#collections">Collections</a>
+      <a href="#pickup">Pickup Davao</a>
+      <a href="#sale">Sale</a>
+      <a href="#admin">Admin</a>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Jordan Legacy · 2025 Drop</p>
+        <h1 class="hero-title">ENGINEERED<br>FOR <span>LIMITLESS</span><br>MOTION</h1>
+        <p class="hero-sub">Iconic silhouettes. Performance materials. Built to move with you — on court and off.</p>
+        <div class="hero-ctas">
+          <a href="#shop" class="btn btn-primary">Shop Now</a>
+          <a href="#collections" class="btn btn-secondary">Explore Air</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-glow"></div>
+        <div class="hero-shoe-stage" id="heroStage">
+          <img src="images/air jordan high red.png" alt="Air Jordan 1 High" class="hero-shoe active" data-label="AJ1 · CHICAGO">
+          <img src="images/air jordan 11 concord.png" alt="Air Jordan 11 Concord" class="hero-shoe" data-label="AJ11 · CONCORD">
+          <img src="images/air jordan 4 bred.png" alt="Air Jordan 4 Bred" class="hero-shoe" data-label="AJ4 · BRED">
+          <img src="images/air jordan 6 ifrared.png" alt="Air Jordan 6 Infrared" class="hero-shoe" data-label="AJ6 · INFRARED">
+          <img src="images/air jordan 12 flugame.png" alt="Air Jordan 12 Flu Game" class="hero-shoe" data-label="AJ12 · FLU GAME">
+          <img src="images/Nike Air Jordan 3 Retro OG Black Cement.png" alt="Air Jordan 3 Black Cement" class="hero-shoe" data-label="AJ3 · BLACK CEMENT">
+        </div>
+        <div class="hero-badge" id="heroBadge">AJ1 · CHICAGO</div>
+        <div class="hero-dots" id="heroDots"></div>
+      </div>
+    </section>
+
+    <!-- Filter + Shop -->
+    <section class="shop-section" id="shop">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Trending Now</p>
+          <h2 class="section-title">The Drop</h2>
+        </div>
+        <div class="search-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" id="searchInput" placeholder="Search sneakers..." autocomplete="off">
+        </div>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="aj1">AJ1</button>
+        <button class="filter-chip" data-filter="aj2">AJ2</button>
+        <button class="filter-chip" data-filter="aj3">AJ3</button>
+        <button class="filter-chip" data-filter="aj4">AJ4</button>
+        <button class="filter-chip" data-filter="aj5">AJ5</button>
+        <button class="filter-chip" data-filter="aj6">AJ6</button>
+        <button class="filter-chip" data-filter="aj7">AJ7</button>
+        <button class="filter-chip" data-filter="aj8">AJ8</button>
+        <button class="filter-chip" data-filter="aj9">AJ9</button>
+        <button class="filter-chip" data-filter="aj10">AJ10</button>
+        <button class="filter-chip" data-filter="aj11">AJ11</button>
+        <button class="filter-chip" data-filter="aj12">AJ12</button>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- Products injected by JS -->
+      </div>
+    </section>
+
+    <!-- Collections / Editorial -->
+    <section class="collections" id="collections">
+      <div class="collection-card large">
+        <div class="collection-content">
+          <p class="section-eyebrow">Heritage</p>
+          <h2>Air Jordan<br>Archives</h2>
+          <p>From the court to the culture. Every silhouette tells a story.</p>
+          <a href="#shop" class="btn btn-primary">Shop Jordan</a>
+        </div>
+        <img src="images/air jordan 11 concord.png" alt="AJ11 Concord" class="collection-img">
+      </div>
+      <div class="collection-card">
+        <div class="collection-content">
+          <p class="section-eyebrow">New</p>
+          <h3>Infrared Energy</h3>
+          <a href="#shop" class="link-arrow">Explore →</a>
+        </div>
+        <img src="images/air jordan 6 ifrared.png" alt="AJ6 Infrared">
+      </div>
+      <div class="collection-card">
+        <div class="collection-content">
+          <p class="section-eyebrow">Classic</p>
+          <h3>Bred Forever</h3>
+          <a href="#shop" class="link-arrow">Explore →</a>
+        </div>
+        <img src="images/air jordan 4 bred.png" alt="AJ4 Bred">
+      </div>
+    </section>
+
+    <!-- Pickup Davao -->
+    <section class="pickup-section" id="pickup">
+      <div class="pickup-inner">
+        <div class="pickup-copy">
+          <p class="section-eyebrow">Local in Davao</p>
+          <h2 class="section-title">Pickup &amp; Delivery</h2>
+          <p class="pickup-text">Verified pairs ready for Metro Davao delivery or same-day pickup at our designated Lanang lot. Clear peso pricing, honest stock.</p>
+          <ul class="pickup-list">
+            <li><strong>Metro Davao</strong> — ₱120 · 1–2 days</li>
+            <li><strong>Nationwide</strong> — ₱180 · 3–7 days</li>
+            <li><strong>Lanang pickup lot</strong> — Free · Ready in 24 hrs</li>
+          </ul>
+        </div>
+        <div class="pickup-card">
+          <div class="pickup-card-head">
+            <span class="nearest">Nearest</span>
+            <h3>Designated pickup lot · Lanang</h3>
+            <small>Lanang, Davao City, Davao del Sur 8000</small>
+          </div>
+          <div class="pickup-details">
+            <div><span>Hours</span><strong>10 AM – 8 PM</strong></div>
+            <div><span>Contact</span><strong>09XX XXX XXXX</strong></div>
+          </div>
+          <a href="#shop" class="btn btn-primary" style="width:100%;justify-content:center">Reserve a pair</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lanang pickup location and brand purpose -->
+    <section class="location-section" id="location">
+      <div class="location-header">
+        <p class="section-eyebrow">One pickup location in Davao</p>
+        <h2 class="section-title">Designated pickup lot · Lanang</h2>
+        <p>Reserve your pair online, then collect it at the designated Lanang pickup lot. We do not operate a retail storefront at this location.</p>
+      </div>
+      <div class="location-layout">
+        <div class="map-frame">
+          <iframe
+            title="Designated HalfCourt Shoe pickup lot in Lanang, Davao City"
+            src="https://www.google.com/maps?q=Lanang%2C%20Davao%20City&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="location-details">
+          <p class="section-eyebrow">Pickup details</p>
+          <h3>One designated lot · Lanang</h3>
+          <p>Lanang, Davao City, Davao del Sur 8000</p>
+          <div class="location-facts">
+            <span><strong>Hours</strong>10 AM – 8 PM</span>
+            <span><strong>Ready</strong>Within 24 hrs</span>
+            <span><strong>Fee</strong>Free pickup</span>
+          </div>
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Lanang%2C%20Davao%20City" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="purpose-section" id="purpose">
+      <div class="purpose-header">
+        <p class="section-eyebrow">Why HalfCourt exists</p>
+        <h2 class="section-title">Built for the local sneaker community.</h2>
+      </div>
+      <div class="purpose-grid">
+        <article class="purpose-card">
+          <p class="section-eyebrow">Mission</p>
+          <h3>Make the right pair easier to find.</h3>
+          <p>To provide sneakerheads and casual buyers in Davao City with access to high-demand, authentic Jordan pairs and popular everyday kicks through transparent pricing and convenient local delivery.</p>
+        </article>
+        <article class="purpose-card">
+          <p class="section-eyebrow">Vision</p>
+          <h3>Davao’s trusted sneaker destination.</h3>
+          <p>To be Davao City’s most trusted local destination for authentic Jordan sneakers and lifestyle footwear.</p>
+        </article>
+        <article class="purpose-card purpose-goals">
+          <p class="section-eyebrow">Goals</p>
+          <h3>What we commit to.</h3>
+          <ul>
+            <li><strong>Local accessibility:</strong> Popular silhouettes ready for Lanang pickup or fast Metro Davao delivery.</li>
+            <li><strong>Transparent pricing:</strong> Straightforward Peso pricing with no hidden markup fees.</li>
+            <li><strong>Community trust:</strong> Authentic inventory and responsive local customer support.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sale Banner -->
+    <section class="sale-banner" id="sale">
+      <div class="sale-inner">
+        <h2>Davao Member Perks</h2>
+        <p>Free Metro Davao delivery over ₱8,000 · early access to drops · exclusive colorways.</p>
+        <button class="btn btn-primary" id="joinBtn">Join the drop</button>
+      </div>
+    </section>
+
+    <!-- New Releases strip -->
+    <section class="new-releases" id="new">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">Just Dropped</p>
+          <h2 class="section-title">Fresh Kicks</h2>
+        </div>
+      </div>
+      <div class="carousel" id="carousel">
+        <!-- Injected -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-mark">HC</span>
+        <span class="logo-text"><strong>HalfCourt</strong><small>Shoe · Davao</small></span>
+        <p>Local pairs. Properly found.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Shop</h4>
+          <a href="#shop">All Sneakers</a>
+          <a href="#new">New Releases</a>
+          <a href="#sale">Sale</a>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <a href="tel:09917257903">Call us: 09917257903</a>
+          <a href="#">Order Status</a>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+        </div>
+        <div>
+          <h4>About</h4>
+          <a href="#">Our Story</a>
+          <a href="#">Sustainability</a>
+          <a href="#">Careers</a>
+          <a href="#admin">Admin Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 · Davao / PH · Local pairs. Properly found.</span>
+      <span>Terms · Privacy · Cookie Settings</span>
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div class="modal-root" id="modalRoot"></div>
+
+  <!-- Cart Drawer -->
+  <div class="drawer-root" id="drawerRoot"></div>
+
+  <!-- Wishlist Drawer -->
+  <div class="drawer-root" id="wishRoot"></div>
+
+  <!-- Order History Drawer -->
+  <div class="drawer-root" id="orderRoot"></div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-root" id="checkoutRoot"></div>
+
+  <!-- Toast -->
+  <div class="toast-root" id="toastRoot"></div>
+  </div>
+
+  <div id="adminRoot" hidden>
+    <main class="auth-shell" id="adminAuth">
+      <section class="auth-card" aria-labelledby="adminLoginTitle">
+        <div class="brand"><span class="brand-mark">HC</span><span>HALFCOURT<small>SHOE STORE ADMIN</small></span></div>
+        <h1 id="adminLoginTitle">Admin sign in</h1>
+        <p class="subheading">Sign in with one of the two Supabase accounts approved for this store.</p>
+        <form id="adminLoginForm">
+          <div class="field"><label for="adminEmailInput">Admin email</label><input id="adminEmailInput" type="email" autocomplete="username" required maxlength="160"></div>
+          <div class="field"><label for="adminPasswordInput">Password</label><input id="adminPasswordInput" type="password" autocomplete="current-password" required maxlength="128"></div>
+          <p class="error-message" id="adminLoginError" role="alert"></p>
+          <button class="primary-button" id="adminLoginButton" type="submit">Sign in</button>
+        </form>
+        <p class="subheading"><a href="/" style="color:inherit">Back to customer store</a></p>
+      </section>
+    </main>
+    <div id="adminDashboard" hidden>
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">HC</span><span>HALFCOURT<small>SHOE STORE ADMIN</small></span></div>
+        <nav class="top-navigation" aria-label="Admin sections">
+          <button class="nav-button active" data-admin-view="Dashboard">Dashboard</button>
+          <button class="nav-button" data-admin-view="Products">Products</button>
+          <button class="nav-button" data-admin-view="Orders">Orders</button>
+          <button class="nav-button" data-admin-view="Customers">Customers</button>
+          <button class="nav-button" data-admin-view="Analytics">Analytics</button>
+          <button class="nav-button" data-admin-view="Settings">Settings</button>
+        </nav>
+        <div class="admin-actions">
+          <a class="secondary-button" href="/" style="display:inline-flex;align-items:center;text-decoration:none">Store</a>
+          <span class="live-badge"><i></i> LIVE DATA</span>
+          <span class="admin-email" id="adminSignedInEmail"></span>
+          <button class="secondary-button" id="adminSignOut" type="button">Sign out</button>
+        </div>
+      </header>
+      <div class="shell"><main class="content" id="adminContent" aria-live="polite"></main></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.50.0/dist/umd/supabase.min.js" crossorigin="anonymous"></script>
+  <script>
+    (() => {
+      'use strict';
+      const root = document.getElementById('adminRoot');
+      const content = document.getElementById('adminContent');
+      const state = { client: null, overview: null, view: 'Dashboard', search: '', channel: null, refreshInterval: null, realtimeTimer: null, pageError: '' };
+      const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[character]));
+      const money = value => '₱' + Number(value || 0).toLocaleString('en-PH', { maximumFractionDigits: 2 });
+      const number = value => Number(value || 0).toLocaleString('en-PH');
+
+      function showAdmin() {
+        document.documentElement.classList.add('admin-mode');
+        root.hidden = false;
+        if (state.client) loadSession();
+        else initialize();
+      }
+
+      function showStore() {
+        document.documentElement.classList.remove('admin-mode');
+        root.hidden = true;
+        clearInterval(state.refreshInterval);
+        clearTimeout(state.realtimeTimer);
+        if (state.channel && state.client) {
+          state.client.removeChannel(state.channel);
+          state.channel = null;
+        }
+      }
+
+      function loginError(message = '') {
+        document.getElementById('adminLoginError').textContent = message;
+      }
+
+      function showLogin(message = '') {
+        state.overview = null;
+        document.getElementById('adminAuth').hidden = false;
+        document.getElementById('adminDashboard').hidden = true;
+        loginError(message);
+      }
+
+      function emptyState(message) {
+        return `<div class="empty-state">${escapeHTML(message)}</div>`;
+      }
+
+      function productPanel(products, compact = false) {
+        const shown = compact ? products.slice(0, 8) : products;
+        const rows = shown.length ? shown.map(product => `
+          <tr><td><strong>${escapeHTML(product.name)}</strong><br><span class="muted-cell">${escapeHTML(product.colorway)}</span></td>
+          <td>${escapeHTML(product.model)}</td><td>${money(product.price)}</td>
+          <td class="${Number(product.stock) === 0 ? 'stock-out' : Number(product.stock) <= 3 ? 'stock-low' : ''}">${number(product.stock)}</td>
+          <td>${number(product.sold)}</td><td>${escapeHTML(product.badge || '—')}</td></tr>`).join('')
+          : `<tr><td colspan="6" class="muted-cell">${emptyState('No active products in the live catalog.')}</td></tr>`;
+        return `<section class="panel"><div class="panel-heading"><h2>Live inventory</h2><p>Stock left updates from checkout</p></div>
+          <div class="table-scroll"><table><thead><tr><th>PRODUCT</th><th>MODEL</th><th>PRICE</th><th>STOCK LEFT</th><th>SOLD · 30D</th><th>BADGE</th></tr></thead><tbody>${rows}</tbody></table></div></section>`;
+      }
+
+      function orderPanel(orders, compact = false) {
+        const shown = compact ? orders.slice(0, 6) : orders;
+        const rows = shown.length ? shown.map(order => `<tr><td>${escapeHTML(order.orderNo)}</td><td>${escapeHTML(order.customer)}</td>
+          <td>${escapeHTML(order.placedAt)}</td><td>${money(order.total)}</td><td>${escapeHTML(order.status)}</td></tr>`).join('')
+          : `<tr><td colspan="5" class="muted-cell">${emptyState('No orders have been recorded.')}</td></tr>`;
+        return `<section class="panel"><div class="panel-heading"><h2>Recent orders</h2><p>${number(orders.length)} shown</p></div>
+          <div class="table-scroll"><table><thead><tr><th>ORDER</th><th>CUSTOMER</th><th>DATE</th><th>TOTAL</th><th>STATUS</th></tr></thead><tbody>${rows}</tbody></table></div></section>`;
+      }
+
+      function customerPanel(customers, compact = false) {
+        const shown = compact ? customers.slice(0, 5) : customers;
+        const rows = shown.length ? shown.map(customer => `<tr><td>${escapeHTML(customer.name)}</td><td>${escapeHTML(customer.email)}</td>
+          <td>${number(customer.orders)}</td><td>${money(customer.spent)}</td></tr>`).join('')
+          : `<tr><td colspan="4" class="muted-cell">${emptyState('No customer accounts have been registered.')}</td></tr>`;
+        return `<section class="panel"><div class="panel-heading"><h2>Top customers</h2><p>By non-cancelled order spend</p></div>
+          <div class="table-scroll"><table><thead><tr><th>CUSTOMER</th><th>EMAIL</th><th>ORDERS</th><th>SPENT</th></tr></thead><tbody>${rows}</tbody></table></div></section>`;
+      }
+
+      function metric(label, value, note) {
+        return `<article class="metric"><div class="metric-label">${escapeHTML(label)}</div>
+          <div class="metric-value">${escapeHTML(value)}</div><div class="metric-foot">${escapeHTML(note)}</div></article>`;
+      }
+
+      function render() {
+        const data = state.overview;
+        if (!data) return;
+        document.querySelectorAll('[data-admin-view]').forEach(button => {
+          button.classList.toggle('active', button.dataset.adminView === state.view);
+          button.setAttribute('aria-current', button.dataset.adminView === state.view ? 'page' : 'false');
+        });
+        if (state.view === 'Dashboard') {
+          const signIns = data.signIns30d === null ? '—' : number(data.signIns30d);
+          const selected = data.products[0];
+          content.innerHTML = `<div class="welcome"><div><p class="eyebrow">STORE ACTIVITY · LAST 30 DAYS</p><h1>Store overview</h1>
+            <p class="subheading">Live database information. Last synced ${escapeHTML(new Date(data.generatedAt).toLocaleString())}.</p></div></div>
+            ${state.pageError ? `<p class="page-error" role="alert">${escapeHTML(state.pageError)}</p>` : ''}
+            <section class="metrics" aria-label="Store metrics">
+              ${metric('Orders', number(data.totalOrders), data.ordersDelta === null ? 'Prior period unavailable for comparison' : `${data.ordersDelta >= 0 ? '+' : ''}${data.ordersDelta}% vs. prior 30 days`)}
+              ${metric('Revenue', money(data.revenue30d), 'Non-cancelled orders · last 30 days')}
+              ${metric('Customer accounts', number(data.customers), 'Registered accounts')}
+              ${metric('Customer sign-ins', signIns, data.signIns30d === null ? 'Apply optional sign-in audit SQL to enable' : 'Recorded in the last 30 days')}
+            </section><div class="dashboard-grid"><div class="dashboard-main">
+              ${productPanel(data.products, true)}<div class="bottom-grid">${orderPanel(data.recentOrders, true)}${customerPanel(data.topCustomers, true)}</div>
+            </div>${selected ? `<aside class="detail-card"><p class="eyebrow">PRODUCT SNAPSHOT</p><h2>${escapeHTML(selected.name)}</h2><p>${escapeHTML(selected.colorway)} · ${escapeHTML(selected.model)}</p>
+              <div class="detail-info"><span>Price</span><b>${money(selected.price)}</b></div><div class="detail-info"><span>Stock left</span><b>${number(selected.stock)}</b></div>
+              <div class="detail-info"><span>Sold · 30 days</span><b>${number(selected.sold)}</b></div></aside>` : ''}</div>`;
+        } else if (state.view === 'Products') {
+          const query = state.search.trim().toLowerCase();
+          const products = data.products.filter(product => `${product.name} ${product.colorway} ${product.model}`.toLowerCase().includes(query));
+          content.innerHTML = `<div class="welcome"><div><p class="eyebrow">LIVE CATALOG</p><h1>Products</h1><p class="subheading">Current inventory and sales over the last 30 days.</p></div></div>
+            <section class="full-panel"><div class="toolbar"><input class="search" id="adminProductSearch" type="search" value="${escapeHTML(state.search)}" placeholder="Search products" aria-label="Search products">
+            <span class="result-count">${number(products.length)} products</span></div>${productPanel(products)}</section>`;
+          const search = document.getElementById('adminProductSearch');
+          search.addEventListener('input', () => {
+            state.search = search.value;
+            const position = search.selectionStart;
+            render();
+            const updated = document.getElementById('adminProductSearch');
+            updated.focus();
+            updated.setSelectionRange(position, position);
+          });
+        } else if (state.view === 'Orders') {
+          content.innerHTML = `<div class="welcome"><div><p class="eyebrow">FULFILLMENT</p><h1>Orders</h1><p class="subheading">Most recent orders, newest first.</p></div></div><section class="full-panel">${orderPanel(data.recentOrders)}</section>`;
+        } else if (state.view === 'Customers') {
+          content.innerHTML = `<div class="welcome"><div><p class="eyebrow">CUSTOMER RELATIONSHIPS</p><h1>Customers</h1><p class="subheading">${number(data.customers)} registered customer accounts. Showing up to five ranked by spend.</p></div></div><section class="full-panel">${customerPanel(data.topCustomers)}</section>`;
+        } else if (state.view === 'Analytics') {
+          content.innerHTML = `<div class="welcome"><div><p class="eyebrow">STORE PERFORMANCE</p><h1>Analytics</h1><p class="subheading">Metrics come from recorded database orders only.</p></div></div>
+            <section class="metrics">${metric('Revenue · 30 days', money(data.revenue30d), 'Non-cancelled orders')}${metric('Orders · 30 days', number(data.totalOrders), 'All order statuses')}
+            ${metric('Order change', data.ordersDelta === null ? '—' : `${data.ordersDelta >= 0 ? '+' : ''}${data.ordersDelta}%`, 'Compared with the prior 30 days')}
+            ${metric('Customer sign-ins', data.signIns30d === null ? '—' : number(data.signIns30d), data.signIns30d === null ? 'Optional audit table is not installed' : 'Last 30 days')}</section>`;
+        } else {
+          content.innerHTML = `<div class="welcome"><div><p class="eyebrow">CONFIGURATION</p><h1>Settings</h1><p class="subheading">Admin accounts are controlled in Supabase, not from this browser.</p></div></div>
+            <section class="full-panel"><h2>Two-admin access</h2><p class="subheading">Only the two user IDs listed in <code>public.store_admins</code> can load admin data. Manage accounts in Supabase Authentication and SQL Editor.</p>
+            <p class="subheading">No service-role key or database password is sent to this page.</p></section>`;
+        }
+      }
+
+      async function refreshOverview() {
+        if (!state.client) return false;
+        const { data: sessionData } = await state.client.auth.getSession();
+        const session = sessionData.session;
+        if (!session) {
+          showLogin('Your admin session ended. Sign in again.');
+          return false;
+        }
+        let response;
+        try {
+          response = await fetch('api.php?action=adminOverview', {
+            headers: { Authorization: `Bearer ${session.access_token}`, Accept: 'application/json' },
+            credentials: 'same-origin',
+            cache: 'no-store'
+          });
+        } catch {
+          const message = 'Could not reach the store API. Check the connection and retry.';
+          if (state.overview) {
+            state.pageError = message;
+            render();
+          } else loginError(message);
+          return false;
+        }
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          const message = result.error || 'Unable to load live store data.';
+          if (response.status === 401 || response.status === 403) {
+            await state.client.auth.signOut();
+            showLogin(message);
+          } else if (state.overview) {
+            state.pageError = message;
+            render();
+          } else loginError(message);
+          return false;
+        }
+        state.overview = result;
+        state.pageError = '';
+        document.getElementById('adminSignedInEmail').textContent = session.user.email || '';
+        document.getElementById('adminAuth').hidden = true;
+        document.getElementById('adminDashboard').hidden = false;
+        render();
+        return true;
+      }
+
+      function subscribeToInventory() {
+        if (state.channel) return;
+        state.channel = state.client.channel('store-admin-inventory')
+          .on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, () => {
+            clearTimeout(state.realtimeTimer);
+            state.realtimeTimer = setTimeout(() => refreshOverview(), 250);
+          })
+          .subscribe();
+      }
+
+      async function loadSession() {
+        if (await refreshOverview()) {
+          subscribeToInventory();
+          clearInterval(state.refreshInterval);
+          state.refreshInterval = setInterval(() => refreshOverview(), 30000);
+        }
+      }
+
+      async function initialize() {
+        if (!window.supabase?.createClient) {
+          loginError('Supabase sign-in could not be loaded. Check your connection and reload.');
+          return;
+        }
+        try {
+          const response = await fetch('api.php?action=adminConfig', { cache: 'no-store' });
+          if (!(response.headers.get('content-type') || '').toLowerCase().includes('application/json')) {
+            throw new Error('Admin sign-in needs the PHP-powered website.');
+          }
+          const config = await response.json();
+          if (!response.ok) throw new Error(config.error || 'Admin sign-in is not configured on the server.');
+          state.client = window.supabase.createClient(config.url, config.anonKey, {
+            auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+          });
+          const { data: sessionData, error } = await state.client.auth.getSession();
+          if (error) throw error;
+          if (sessionData.session) await loadSession();
+          state.client.auth.onAuthStateChange((event, session) => {
+            if (location.hash !== '#admin') return;
+            if (event === 'SIGNED_OUT' || !session) showLogin();
+          });
+        } catch (error) {
+          loginError(error.message || 'Admin sign-in could not be initialized.');
+        }
+      }
+
+      document.getElementById('adminLoginForm').addEventListener('submit', async event => {
+        event.preventDefault();
+        const button = document.getElementById('adminLoginButton');
+        button.disabled = true;
+        loginError();
+        try {
+          if (!state.client) throw new Error('Admin sign-in is not configured. Reload the page and try again.');
+          const { error } = await state.client.auth.signInWithPassword({
+            email: document.getElementById('adminEmailInput').value.trim(),
+            password: document.getElementById('adminPasswordInput').value
+          });
+          if (error) throw error;
+          await loadSession();
+        } catch (error) {
+          loginError(error.message || 'Sign-in failed.');
+        } finally {
+          button.disabled = false;
+        }
+      });
+
+      document.getElementById('adminSignOut').addEventListener('click', async () => {
+        const { error } = await state.client.auth.signOut();
+        if (error) {
+          state.pageError = 'Sign out failed. Please try again.';
+          render();
+          return;
+        }
+        showLogin();
+      });
+
+      document.querySelectorAll('[data-admin-view]').forEach(button => {
+        button.addEventListener('click', () => {
+          state.view = button.dataset.adminView;
+          state.search = '';
+          render();
+        });
+      });
+
+      window.addEventListener('hashchange', () => {
+        if (location.hash === '#admin') showAdmin();
+        else showStore();
+      });
+
+      if (location.hash === '#admin') showAdmin();
+      else showStore();
+    })();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

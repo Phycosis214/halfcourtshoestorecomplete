@@ -1,0 +1,14 @@
+FROM dunglas/frankenphp:1-php8.4-alpine
+
+WORKDIR /app
+
+RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+    && install-php-extensions pdo_pgsql \
+    && echo 'session.save_path=/tmp' > "$PHP_INI_DIR/conf.d/zz-session.ini"
+
+COPY . .
+COPY Caddyfile /etc/caddy/Caddyfile
+
+ENV PORT=80
+
+CMD ["frankenphp", "run", "--config", "/etc/caddy/Caddyfile"]

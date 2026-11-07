@@ -1,0 +1,17 @@
+.git
+.env*
+.vercel
+node_modules
+.next
+app
+lib
+public
+sql
+*.md
+*.sql
+*.pdf
+images/New folder
+package.json
+next.config.ts
+next-env.d.ts
+tsconfig.json
